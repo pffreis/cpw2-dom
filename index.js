@@ -3,6 +3,9 @@
  */
 function background(){
 
+    let newBackground = document.getElementsByTagName("body")[0];
+    newBackground.style.backgroundColor = "#BECCC3";
+
     /**
      * Tarefa/Issue  1
      *
@@ -19,6 +22,11 @@ function background(){
  */
 function show(){
 
+    let name = document.getElementById("fname").value;
+    let lastName = document.getElementById("lname").value;
+
+    document.getElementById("result").innerText = name + " " + lastName; 
+
      /**
       * Issue  2
       *
@@ -34,6 +42,23 @@ function show(){
 function search(){
 
     var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
+
+    let input = document.getElementById("name").value.toUpperCase();
+    removeAllChildren(document.getElementById("search"))
+    for(let x of data){
+        let nameSubstring = x.name.substr(0,input.length).toUpperCase();
+        if(nameSubstring == input && input.length>0){
+            var p = document.createElement("p");
+            p.innerText = x.name;
+            document.getElementById("search").appendChild(p);
+        }
+        
+    }
+
+    //document.getElementById("search").innerText = input; 
+
+
+
 
     /**
      * Issue 3
